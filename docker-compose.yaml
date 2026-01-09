@@ -1,0 +1,19 @@
+services:
+  site:
+    container_name: darix-site
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "${SITE_PORT}:${SITE_PORT}"
+    environment:
+      SITE_PORT: ${SITE_PORT}
+      TG_TOKEN: ${TG_TOKEN}
+      TG_CHAT_ID: ${TG_CHAT_ID}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${SITE_PORT}/health_check"]
+      interval: 180s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
