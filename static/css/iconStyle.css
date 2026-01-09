@@ -1,0 +1,175 @@
+.tech-section{
+  color:#fff;
+  padding: 110px 0 90px;
+  position: relative;
+  overflow: hidden;
+   background: transparent;
+}
+
+.tech-wrap{
+  width:min(1200px, calc(100% - 48px));
+  margin:0 auto;
+   z-index: 2;
+}
+
+.tech-title{
+  margin:0 0 54px;
+  font-size: clamp(48px, 6vw, 78px);
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: .95;
+  font-family: 'Neuropol', sans-serif;
+  white-space: nowrap;        /* 🔒 запрет переноса */
+  overflow: hidden;           /* защита от вылета */
+  text-overflow: ellipsis;    /* если совсем не влезет */
+}
+
+/* линии */
+.marquee{
+  position: relative;
+  margin: 22px 0;
+  overflow: visible;
+}
+
+.marquee__track{
+  display: flex;
+  gap: 56px;
+  align-items: center;
+  will-change: transform;
+  transform: translate3d(0,0,0);
+}
+
+/* элементы */
+.tech-item{
+  min-width: 180px;
+  height: 86px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+  backdrop-filter: blur(10px) saturate(120%);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(255,255,255,.92);
+  letter-spacing: .01em;
+
+  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+
+.tech-item:hover{
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+}
+
+/* виньетка — ПОД контентом и НЕ режет свечение */
+.tech-section::before{
+  content:"";
+  position:absolute;
+  inset:-80px;              /* ✅ уводим градиент дальше края */
+  pointer-events:none;
+  z-index: 0;               /* ✅ было 1 — из-за этого перекрывало */
+  opacity: .85;
+  filter: blur(18px);       /* мягче, без шва */
+}
+
+/* УБИРАЕМ ::after вообще (он часто даёт линию) */
+.tech-section::after{
+  content:none;
+}
+
+@media (max-width: 680px){
+  .marquee__track{ gap: 22px; }
+  .tech-item{ min-width: 150px; height: 72px; font-size: 18px; }
+}
+
+/* перо снизу, чтобы не было видимого края/стыка */
+.tech-section .fade-bottom{
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height: 90px;
+  pointer-events:none;
+  z-index: 3; 
+}
+
+@media (max-width: 768px){
+
+  .tech-section{
+    padding: 48px 0 32px;
+  }
+
+  .tech-wrap{
+    width: calc(100% - 32px);
+  }
+
+  /* ===== ЗАГОЛОВОК ===== */
+  .tech-title{
+    margin-bottom: 36px;
+    font-size: clamp(30px, 9vw, 44px);
+    line-height: 1.05;
+    letter-spacing: .015em;
+
+    white-space: normal;    
+    text-overflow: unset;
+  }
+
+  .marquee{
+    margin: 18px 0;
+    overflow: hidden;       
+  }
+
+  .marquee__track{
+    gap: 18px;
+  }
+
+  .tech-item{
+    min-width: 128px;
+    height: 60px;
+    border-radius: 16px;
+
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .01em;
+
+    box-shadow: 0 10px 26px rgba(0,0,0,.45);
+  }
+
+  .tech-item:hover{
+    transform: none; 
+  }
+
+  .tech-section::before{
+    inset: -120px;
+    opacity: .75;
+    filter: blur(22px);
+  }
+
+  .tech-section .fade-bottom{
+    height: 64px;
+  }
+}
+
+
+@media (max-width: 420px){
+
+  .tech-title{
+    font-size: 28px;
+    letter-spacing: .01em;
+  }
+
+  .tech-item{
+    min-width: 112px;
+    height: 54px;
+    font-size: 15px;
+  }
+
+  .marquee__track{
+    gap: 14px;
+  }
+}

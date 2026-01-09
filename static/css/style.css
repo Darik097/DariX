@@ -1,0 +1,301 @@
+:root {
+  --lg-bg-color: rgba(255,255,255,.25);
+  --lg-highlight: rgba(255,255,255,.75);
+  --lg-red: #fb4268;
+  --stroke: rgba(255,255,255,.14);
+  --bg: #0a0a0a;
+  --text: #e9eef5;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../font/Manrope.ttf') format('truetype');
+  font-weight: 400; /* обычный вес */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neuropol';
+  src: url('../font/Neuropol.ttf') format('truetype');
+  font-weight: 400; /* обычный вес */
+  font-style: normal;
+}
+
+/* base */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
+}
+
+/* header */
+.header {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  right: 0;     /* вместо width:100% */
+  width: auto; 
+  z-index: 100;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(8px);
+    z-index: 9999;   
+    isolation: isolate; 
+     transform: none !important;
+}
+
+.header__inner {
+  width: min(1200px, 92vw);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 22px;
+  font-family: 'Neuropol', sans-serif;
+}
+
+.brand__logo {
+  width: 36px; height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+  box-shadow: 0 0 0 1px var(--stroke) inset, 0 8px 24px rgba(0,0,0,.35);
+}
+
+.nav__link {
+  color: #e7ecf5;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 24px;
+  font-family: 'Manrope', sans-serif;
+}
+
+.call-btn {
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  padding: 10px 24px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+  
+}
+.header-ghost { height: 80px; }
+
+/* hero */
+.hero {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  /* ключевые строки ↓↓↓ */
+  overflow-x: clip;    /* убирает горизонтальный скролл, но не обрезает вверх/вниз */
+  overflow-y: visible; /* позволяет свечению и шару выходить вниз */
+  
+  z-index: 100;
+}
+
+
+.hero__inner {
+  width: 100%;
+  max-width: 1400px; /* чуть шире, чтобы h1 не был узким */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr; /* немного смещаем баланс в сторону текста */
+  align-items: center;
+  gap: 3rem;
+  padding: 0 4vw;
+}
+
+/* делаем заголовок шире, за счёт line-height и меньших отступов */
+h1 {
+  font-size: clamp(3rem, 7vw, 5rem);
+  line-height: 1.05;
+  margin: 1rem 0;
+  font-weight: 800;
+  max-width: 18ch; /* ограничение на длину строки, но визуально шире */
+  font-family: 'Neuropol', sans-serif;
+}
+
+/* картинка уходит к правому краю */
+.hero-art {
+  position: relative;
+  justify-self: end;
+  margin-right: -8vw; /* немного выходит за экран */
+  overflow: visible;
+  z-index: 2;
+}
+
+.hero-art__blob {
+  width: clamp(600px, 60vw, 600px);
+  display: block;
+  height: auto;
+  filter: drop-shadow(0 40px 120px rgba(88,120,255,.25));
+  will-change: transform, filter; 
+}
+
+
+.lead {
+  font-size: 1.1rem;
+  color: #cfd5de;
+  font-family: 'Manrope', sans-serif;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .3rem .7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--stroke);
+  font-family: 'Manrope', sans-serif;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--lg-red);
+  box-shadow: 0 0 12px var(--lg-red);
+}
+.cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 30px;
+  border-radius: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: #fff; color: #000; }
+.btn-glass {
+  color: #fff;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(8px) saturate(140%);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25),
+              inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.hero-art__disc {
+  position: absolute;
+  bottom: -10%; left: 6%;
+  width: 46%; aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 1px solid var(--stroke);
+  background: radial-gradient(60% 60% at 35% 30%,
+              rgba(255,255,255,.15) 0%,
+              rgba(255,255,255,.04) 60%,
+              transparent 100%);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .hero__inner{ grid-template-columns:1fr; text-align:center; }
+  nav{ display:none; }
+}
+
+
+@media (max-width: 768px){
+
+  /* ===== HEADER ===== */
+  .header{
+    backdrop-filter: blur(10px);
+  }
+
+  .header__inner{
+    padding: 14px 0;
+  }
+
+  nav{
+    display: none;
+  }
+
+  .call-btn{
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  .header-ghost{
+    height: 68px;
+  }
+
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height: auto;
+    padding-top: 24px;
+    padding-bottom: 64px;
+    overflow-x: hidden;
+  }
+
+  .hero__inner{
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    padding: 0 6vw;
+    text-align: center;
+  }
+
+  h1{
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    max-width: none;
+    margin: .6rem 0;
+  }
+
+  .lead{
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+
+  .eyebrow{
+    margin: 10px auto;
+  }
+
+  .cta{
+    justify-content: center;
+    gap: .8rem;
+  }
+
+  .btn{
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 20px;
+  }
+
+
+  /* ===== HERO ART ===== */
+  .hero-art{
+    margin-right: 0;
+    justify-self: center;
+    order: -1; /* шар уезжает наверх */
+  }
+
+  .hero-art__blob{
+    width: min(88vw, 420px);
+    filter: drop-shadow(0 30px 80px rgba(88,120,255,.22));
+  }
+
+  .hero-art__disc{
+    display: none; /* на мобилке лишний шум */
+  }
+}

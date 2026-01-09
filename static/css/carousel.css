@@ -1,0 +1,397 @@
+:root{
+      --bg:#000;
+      --text:#fff;
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.12);
+
+      --glass-bg: rgba(255,255,255,.14);
+      --glass-hi: rgba(255,255,255,.55);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* ====== SECTION ====== */
+    .portfolio{
+      padding: 110px 0 120px;
+      overflow:hidden;
+      position:relative;
+    }
+
+
+    .container{
+      width:min(1200px, calc(100% - 48px));
+      margin:0 auto;
+      padding: 64px 0px 12px;
+    }
+
+    .portfolio__title{
+      font-size: clamp(48px, 6vw, 92px);
+      letter-spacing: .02em;
+      margin:0;
+      font-weight: 600;
+      line-height: .95;
+      text-transform: uppercase;
+      font-family: 'Neuropol', sans-serif;
+    }
+
+    .portfolio__desc{
+      margin: 18px 0 0;
+      max-width: 980px;
+      color: var(--muted);
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.6;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* subtle top gradient line like premium sections */
+    .divider{
+      margin-top: 32px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    }
+
+    /* ====== CAROUSEL ====== */
+    .carousel{
+      margin-top: 46px;
+      position:relative;
+      height: 520px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      user-select:none;
+    }
+
+  
+    .track{
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  will-change: transform;
+}
+
+
+
+    .slide{
+      position:relative;
+      border-radius: 26px;
+      overflow:hidden;
+      background: #141414;
+      box-shadow: 0 30px 60px rgba(0,0,0,.55);
+      transform: translateZ(0);
+      transition: transform .55s cubic-bezier(.2,.8,.2,1),
+                  opacity .55s cubic-bezier(.2,.8,.2,1),
+                  filter .55s cubic-bezier(.2,.8,.2,1);
+      flex: 0 0 auto;
+    }
+
+    /* размеры как в макете: центр больше, боковые меньше */
+    .slide--side{
+      width: 380px;
+      height: 360px;
+      opacity: .35;
+      filter: saturate(.95) contrast(.95);
+      transform: scale(.88);
+    }
+    .slide--active{
+      width: 720px;
+      height: 420px;
+      opacity: 1;
+      filter: none;
+      transform: scale(1);
+    }
+
+    .slide img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* подпись только на активном */
+    .caption{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      padding: 18px 18px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,0));
+      transform: translateY(8px);
+      opacity:0;
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .slide--active .caption{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .caption h3{
+      margin:0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .caption p{
+      margin:6px 0 0;
+      color: rgba(255,255,255,.7);
+      font-size: 14px;
+      line-height: 1.35;
+      max-width: 90%;
+    }
+
+    /* ====== ARROWS (glass) ====== */
+    .nav{
+      position:absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px) saturate(120%);
+      box-shadow: inset 1px 1px 0 var(--glass-hi), 0 18px 40px rgba(0,0,0,.45);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition: transform .2s ease, background .2s ease;
+      z-index:5;
+    }
+    .nav:hover{ background: rgba(255,255,255,.10); transform: translateY(-50%) scale(1.03); }
+    .nav:active{ transform: translateY(-50%) scale(.98); }
+    .nav--prev{ left: 0; }
+    .nav--next{ right: 0; }
+
+    .nav svg{ width: 22px; height: 22px; }
+
+    /* dots (не обязательно, но красиво и удобно) */
+    .dots{
+      position:absolute;
+      left:0; right:0;
+      bottom: -18px;
+      display:flex;
+      gap: 8px;
+      justify-content:center;
+      opacity:.8;
+    }
+    .dot{
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.25);
+      border: 1px solid rgba(255,255,255,.18);
+      transition: transform .2s ease, background .2s ease;
+      cursor:pointer;
+    }
+    .dot.is-active{
+      background: rgba(255,255,255,.7);
+      transform: scale(1.2);
+    }
+
+    /* ====== MOBILE ====== */
+    @media (max-width: 980px){
+      .carousel{ height: 520px; }
+      .slide--active{ width: 92vw; height: 360px; }
+      .slide--side{ display:none; }
+      .track{ padding: 0 62px; gap: 0; }
+    }
+    @media (max-width: 520px){
+      .carousel{ height: 460px; }
+      .slide--active{ height: 320px; border-radius: 22px; }
+      .nav{ width: 46px; height: 46px; }
+    }
+
+    .global-glow{
+  position: fixed;
+  inset: -200px -200px auto auto; /* свечение уходит за верх/право */
+  width: 900px;
+  height: 900px;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .55;
+  filter: blur(18px) saturate(140%);
+  background:
+    radial-gradient(50% 50% at 50% 50%, rgba(120,95,255,0.35) 0%, rgba(120,95,255,0.12) 45%, rgba(0,0,0,0) 72%),
+    radial-gradient(40% 40% at 70% 35%, rgba(74,222,128,0.18) 0%, rgba(0,0,0,0) 70%),
+    radial-gradient(40% 40% at 35% 70%, rgba(56,189,248,0.20) 0%, rgba(0,0,0,0) 70%);
+}
+
+/* Контент должен быть выше свечения */
+.portfolio, .hero, .container, header, main, section{
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================================================
+   📱 MOBILE / TABLET ADAPTATION
+   ================================================== */
+
+@media (max-width: 1024px){
+
+  /* ===== SECTION ===== */
+  .portfolio{
+    padding: 12px 0 18px;
+  }
+
+  .container{
+    width: calc(100% - 32px);
+  }
+
+  /* ===== TITLE ===== */
+  .portfolio__title{
+    font-size: clamp(34px, 8.5vw, 54px);
+    line-height: 1;
+    letter-spacing: .01em;
+  }
+
+  .portfolio__desc{
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 14px;
+  }
+
+  .divider{
+    margin-top: 24px;
+  }
+
+  /* ===== CAROUSEL ===== */
+  .carousel{
+    height: 440px;
+    margin-top: 32px;
+  }
+
+  .track{
+    gap: 0;
+    padding: 0 64px;
+  }
+
+  /* показываем только активный слайд */
+  .slide--side{
+    display: none;
+  }
+
+  .slide--active{
+    width: 92vw;
+    height: 340px;
+    border-radius: 22px;
+  }
+
+  /* изображение */
+  .slide img{
+    border-radius: inherit;
+  }
+
+  /* подпись */
+  .caption{
+    padding: 14px 16px 14px;
+  }
+
+  .caption h3{
+    font-size: 16px;
+  }
+
+  .caption p{
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* ===== ARROWS ===== */
+  .nav{
+    width: 46px;
+    height: 46px;
+  }
+
+  .nav svg{
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ===== DOTS ===== */
+  .dots{
+    bottom: -12px;
+    gap: 6px;
+  }
+
+  .dot{
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* =========================
+   📱 SMALL MOBILE (≤520px)
+   ========================= */
+
+@media (max-width: 520px){
+
+  .portfolio{
+    padding: 4px 0 18px;
+  }
+
+  .portfolio__title{
+    font-size: clamp(30px, 9vw, 42px);
+  }
+
+  .portfolio__desc{
+    font-size: 14px;
+  }
+
+  .carousel{
+    height: 400px;
+  }
+
+  .slide--active{
+    height: 300px;
+    border-radius: 20px;
+  }
+
+  .caption{
+    padding: 12px 14px;
+  }
+
+  .caption h3{
+    font-size: 15px;
+  }
+
+  .caption p{
+    font-size: 12.5px;
+  }
+
+  .nav{
+    width: 42px;
+    height: 42px;
+  }
+
+  .nav--prev{
+    left: 6px;
+  }
+
+  .nav--next{
+    right: 6px;
+  }
+}
+
+/* =========================
+   📱 TOUCH IMPROVEMENTS
+   ========================= */
+
+@media (hover: none){
+
+  .nav:hover{
+    transform: translateY(-50%);
+    background: rgba(255,255,255,.06);
+  }
+
+  .dot:hover{
+    transform: none;
+  }
+}

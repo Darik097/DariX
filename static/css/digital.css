@@ -1,0 +1,178 @@
+/* ===== DIGITAL / PROMO ===== */
+.section--digital{
+  position: relative;
+  padding: 80px 0 60px;
+  overflow: visible;         /* свечения и выход арта не режем */
+}
+
+.section--digital .digital__grid{
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr; /* левый блок чуть шире */
+  align-items: center;
+  gap: min(5vw, 56px);
+}
+
+/* правый верхний «пузырь» */
+.digital__bubble{
+  position: absolute;
+  top: -40px; right: -2vw;
+  width: clamp(160px, 18vw, 260px);
+  filter: drop-shadow(0 40px 120px rgba(120,140,255,.35));
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+}
+
+/* левый арт */
+.digital__art{
+  position: relative;
+  z-index: 1;
+  width:85%;
+  height: auto;
+  margin-left: -10vw;          /* эффект выхода за край */
+  overflow: visible;
+}
+
+.digital__art img{
+  display: block;
+  width: min(900px, 120%);
+  height: auto;
+  filter: drop-shadow(0 60px 160px rgba(120,140,255,.25));
+  pointer-events: none;
+}
+
+/* правый контент */
+.digital__content{
+  position: relative;
+  z-index: 3;
+}
+
+
+.digital__title {
+  font-weight: 800;
+  font-size: clamp(36px, 7.6vw, 88px);
+  line-height: 1.05;
+  display: block; /* grid убираем */
+  background: linear-gradient(180deg, #e6e6e6 0%, #bcbcbc 55%, #979797 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: white; /* обязательно */
+  font-family: 'Neuropol', sans-serif;
+}
+
+.digital__title .title-line {
+  display: block; /* inline-block заменяем на block */
+  transform: translateY(0); /* начальное значение для анимации */
+}
+
+
+/* абзац справа */
+.digital__lead{
+  margin: 8px 0 0;
+  font-size: clamp(16px, 1.6vw, 22px);
+  color: #cfd5de;
+  max-width: 52ch;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* адаптив */
+@media (max-width: 1000px){
+  .section--digital .digital__grid{
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .digital__art{
+    margin-left: -10vw;               /* сохраняем «выход» за край */
+  }
+  .digital__art img{
+    width: 125%;
+    max-width: none;
+  }
+  .digital__content{
+    text-align: left;                 /* можно поставить center, если нужно */
+  }
+  .digital__bubble{
+    top: -20px; right: -6vw;
+    width: clamp(140px, 28vw, 220px);
+  }
+}
+
+/* страховка от горизонтального скролла глобально */
+html, body { overflow-x: hidden; }
+
+@media (max-width: 768px){
+
+  .section--digital{
+    padding: 0px 0 72px;
+  }
+
+  .section--digital .digital__grid{
+    width: 100%;
+    padding: 0 16px;
+    grid-template-columns: 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  /* ART */
+  .digital__art{
+    width: 70%;
+    margin-left: -12vw;
+    margin-top: -24px;
+  }
+
+  .digital__art img{
+    width: 130%;
+    max-width: none;
+    filter: drop-shadow(0 40px 120px rgba(120,140,255,.28));
+  }
+
+  /* BUBBLE */
+  .digital__bubble{
+    top: -28px;
+    right: -18vw;
+    width: clamp(120px, 36vw, 180px);
+    opacity: .85;
+    filter: drop-shadow(0 30px 90px rgba(120,140,255,.35));
+  }
+
+  /* CONTENT */
+  .digital__content{
+    text-align: center;
+  }
+
+  .digital__title{
+    font-size: clamp(32px, 9vw, 44px);
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+
+  .digital__lead{
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 34ch;
+    color: #d6dbe4;
+  }
+}
+
+/* WebGL canvas */
+#digital-glow{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.digital__grid{
+  position: relative;
+  z-index: 2;
+}
+
+/* title spans */
+.digital__title span{
+  display: block;
+  overflow: hidden;
+}

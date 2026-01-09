@@ -1,0 +1,245 @@
+/* ===== SERVICES ===== */
+.section--services{
+  position: relative;
+  z-index: 1;         
+  padding: 80px 0 120px;
+  overflow: visible;       
+}
+
+.services__wrap{
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+}
+
+.section-title{
+  font-weight: 800;
+  font-size: clamp(32px, 6vw, 64px);
+  margin: 0 0 12px;
+  color: #b180ff;        
+   font-family: 'Neuropol', sans-serif;
+}
+
+.section-lead{
+  color: #cfd5de;
+  font-size: clamp(16px, 1.6vw, 20px);
+  max-width: 85ch;
+  margin: 0 0 28px;
+  font-family: 'Manrope', sans-serif;
+}
+
+
+/* ===== GRID: 2 строки на всю секцию ===== */
+.services-grid{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr; /* 3 колонки */
+  grid-template-rows: auto auto;        /* 2 строки */
+  gap: 24px;
+  align-items: start;                   
+}
+
+.services-row2{
+  grid-column: 1 / 4;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 24px;
+  position: relative;
+  top: -24px;        /* поднимаем ряд ровно на размер gap */
+  align-items: end;  /* ВАЖНО: все три карточки выровнены по НИЗУ */
+}
+
+.services-row2 .service-card{ align-self: end; }
+
+/* row 1 */
+.card--1{ grid-column:1; grid-row:1; min-height:360px; }
+.card--2{ grid-column:2 / 4; grid-row:1; min-height:220px; }
+
+
+/* row 2 (всё в одной строке, разные высоты) */
+.card--3{ grid-column: 1; grid-row: 2; min-height: 200px; margin-top: clamp(-10px, -8vw, -10px);}     /* низкая */
+.card--4{ grid-column: 2; grid-row: 2; min-height: 335px; }     /* высокая */
+.card--5{ grid-column: 3; grid-row: 2; min-height: 335px; }     /* высокая */
+
+.card--4,
+.card--5{
+  margin-top: clamp(-200px, -8vw, -160px);
+}
+
+
+/* базовый стиль карточек (без дублей) */
+.service-card{
+  position: relative;
+  padding: 26px 28px;
+  border: 1px solid var(--stroke);
+  border-radius: 22px;
+  background: rgba(255,255,255,.02);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+  overflow: visible;
+  align-self: start;
+}
+
+/* бейдж и пузырь — один раз, без дублей */
+.badge{
+  position:absolute; top:10px; left:10px;
+  width:44px; height:44px; display:grid; place-items:center;
+  border-radius:999px; background:#fff; color:#000; font-weight:800;
+  box-shadow:0 12px 32px rgba(0,0,0,.25);
+}
+.card-bubble{
+  position:absolute; right:-24px; bottom:-56px;
+  width: clamp(160px, 26vw, 260px);
+  filter: drop-shadow(0 30px 90px rgba(120,140,255,.3));
+  pointer-events:none; user-select:none;
+  z-index: 10;
+}
+
+.service-card:has(.badge) {
+  padding-top: 76px; /* подгони при желании: 72–84px */
+}
+
+/* первый текстовый блок (заголовок) толкаем вниз весь контент */
+.service-card h3{ 
+  margin-top: auto;
+}
+
+/* занимаясь типографикой – отступы снизу единые */
+.service-card h3{ margin-bottom: 8px; }
+.service-card p{
+   margin: 0 0 4px;
+    font-family: 'Manrope', sans-serif;
+  }
+
+
+/* адаптив: одна колонка – естественный поток */
+@media (max-width: 1000px){
+  .services-grid{ grid-template-columns: 1fr; grid-template-rows: none; }
+  .card--1, .card--2{ grid-column: 1; grid-row: auto; }
+  .services-row2{
+    grid-column: 1; grid-row: auto;
+    grid-template-columns: 1fr; /* по одной в столбик */
+    gap: 20px;
+  }
+  .card--1, .card--2, .card--3, .card--4, .card--5{ min-height: auto; }
+}
+
+@media (max-width: 768px){
+
+  .section--services{
+    padding: 56px 0 72px;
+    overflow-y: visible;
+  }
+
+
+  .section-title{
+    font-size: clamp(28px, 9vw, 36px);
+    text-align: center;
+  }
+
+  .section-lead{
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto 20px;
+  }
+
+.services-grid{
+  display: flex;
+  gap: 16px;
+  padding: 4px 16px 120px; /* 👈 запас снизу */
+
+  overflow-x: auto;
+  overflow-y: visible;   /* ✅ ВОТ ОНО */
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+}
+.services-grid::-webkit-scrollbar{ display:none; }
+
+  /* второй ряд убираем полностью */
+  .services-row2{
+    all: unset;
+    display: contents;
+  }
+
+  /* ===== CARD ===== */
+  .service-card{
+    position: relative;
+    align-items: center;
+    flex: 0 0 86%;
+    max-width: 86%;
+    min-height: auto !important;
+
+    padding: 22px 20px;
+    border-radius: 20px;
+
+    scroll-snap-align: center;
+     
+    overflow: visible;   /* 🔥 ВАЖНО */
+
+    /* MICRO ANIMATION */
+    opacity: 0;
+    transform: translateY(20px) scale(.96);
+    animation: card-in .6s ease-out forwards;
+  }
+
+  /* по порядку */
+  .card--1{ animation-delay: .05s; }
+  .card--2{ animation-delay: .15s; }
+  .card--3{ animation-delay: .25s; }
+  .card--4{ animation-delay: .35s; }
+
+  @keyframes card-in{
+    to{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* ===== TYPO ===== */
+  .service-card h3{
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .service-card p{
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  /* ===== BADGE ===== */
+  .service-card:has(.badge){
+    padding-top: 68px;
+  }
+
+  .badge{
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  /* ===== BUBBLE ===== */
+  .card-bubble{
+    position: absolute;
+    right: -20px;
+    width: 140px;
+    pointer-events: none;
+    z-index: 3;  
+    transform: translateY(70px)     
+  }
+
+  /* лёгкое свечение */
+  .card-bubble::after{
+    content:'';
+    position:absolute;
+    inset:-20%;
+    background: radial-gradient(
+      circle,
+      rgba(160,120,255,.25),
+      transparent 70%
+    );
+    z-index:-1;
+  }
+}

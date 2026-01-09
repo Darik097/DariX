@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title }}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/digital.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/calculator.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/iconStyle.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/phone.css') }}">
+</head>
+
+
+
+<body>
+  <div class="global-glow" aria-hidden="true"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="hdr">
+    <div class="header__inner">
+      <a class="brand" href="{{ url_for('home') }}">
+        <span>DariX</span>
+      </a>
+      <nav>
+        <a class="nav__link" href="#home">Главная</a>
+        <a class="nav__link" href="#about">О компании</a>
+        <a class="nav__link" href="#services">Наши услуги</a>
+        <a class="nav__link" href="#portfolio">Портфолио</a>
+        <a class="nav__link" href="#calculator">Калькулятор</a>
+        
+      </nav>
+      <a href="#call" class="call-btn js-open-modal">Звонок</a>
+    </div>
+  </header>
+  <div class="header-ghost"></div>
+
+  <!-- ===== HERO ===== -->
+  <main class="hero" id="home">
+    <div class="hero__inner">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> 120+ реализованных проектов</div>
+        <h1>DariX — создаём<br> IT-решения, которые<br> приносят прибыль</h1>
+        <p class="lead">Опытная команда и современные технологии — всё, чтобы ваш бизнес стал заметнее и прибыльнее.</p>
+        <div class="cta">
+          <a
+            class="btn btn-primary js-open-modal"
+            data-modal="#orderModal"
+            href="#">
+            Заказать сайт
+           </a>
+          <a class="btn btn-glass" id="calcBtn" href="#calc">Рассчитать стоимость</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <!-- Картинка из static/img -->
+        <img class="hero-art__blob" alt="Абстрактный 3D объект"
+             src="{{ url_for('static', filename='images/image.png') }}">
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== DUMMY SECTIONS ===== -->
+  <section id="about" class="section section--about">
+  <!-- декоративные "плавающие" пузыри -->
+  <img src="{{ url_for('static', filename='images/bubble1.png') }}" alt="" class="bubble bubble--right">
+  <img src="{{ url_for('static', filename='images/bubble2.png') }}" alt="" class="bubble bubble--left">
+
+  <div class="about">
+    <!-- стеклянная карточка KPI слева -->
+    <div class="stats-glass">
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__num">120+</div>
+          <div class="stat__label">Успешных<br>проектов</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">10+</div>
+          <div class="stat__label">Специалистов<br>в команде</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">5+</div>
+          <div class="stat__label">Лет на<br>рынке</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- текст справа -->
+    <div class="about_texxt">
+      <h2 class="about__title">О нас</h2>
+      <p class="about__lead">
+        20+ реализованных проектов, опытная команда и современные технологии — всё, чтобы ваш
+        бизнес стал заметнее и прибыльнее.
+      </p>
+    </div>
+  </div>
+  </section>
+
+  <section id="services" class="section section--services">
+  <div class="services__wrap">
+    <h2 class="section-title">Наши услуги</h2>
+    <p class="section-lead">Мы создаём сайты и приложения, которые работают на результат. Команда DariX разрабатывает лендинги, корпоративные проекты, интернет-магазины, мобильные и десктопные решения, а также уникальные скрипты. Мы берём на себя всё — от дизайна до продвижения и рекламы, превращая ваши проекты в эффективный инструмент привлечения клиентов и роста бизнеса.</p>
+
+    <div class="services-grid">
+      <article class="service-card card--1">
+        <span class="badge">1</span>
+        <h3>Разработка сайтов под ключ</h3>
+        <p>Мы создаём лендинги, корпоративные сайты и интернет-магазины, которые привлекают клиентов и приносят прибыль, а не просто «висят в сети».</p>
+      </article>
+
+      <article class="service-card card--2">
+        <span class="badge">2</span>
+        <h3>Мобильные приложения</h3>
+        <p>iOS/Android, корпоративные и e-commerce-решения...</p>
+      </article>
+    
+        <div class="services-row2">
+            <article class="service-card card--3">
+                <span class="badge">3</span>
+                <h3>Уникальные скрипты и автоматизация</h3>
+                <p>Разрабатываем индивидуальные скрипты и инструменты, которые оптимизируют процессы, экономят время и деньги компании.</p>
+            </article>
+
+            <article class="service-card card--4">
+                <span class="badge">4</span>
+                <h3>SEO и реклама</h3>
+                <p>Комплексное продвижение и настройка рекламы: увеличиваем трафик, выводим сайты в топ и приводим поток новых клиентов.</p>
+            </article>
+
+            <article class="service-card card--5 service-card--tall">
+                <span class="badge">5</span>
+                <h3>И многое другое…</h3>
+                <p>Интеграции, аналитика, CRM, b2b-порталы, поддержка и развитие.</p>
+                <img class="card-bubble" src="{{ url_for('static', filename='images/bubble3.png') }}" alt="">
+            </article>
+        </div>
+    </div>
+  </div>
+  </section>
+
+<!-- ==== DIGITAL / PROMO BLOCK ==== -->
+  <section id="digital" class="section section--digital">
+  <canvas id="digital-glow"></canvas>
+
+  <div class="digital__grid">
+
+    <!-- ART -->
+    <div class="digital__art">
+      <img src="{{ url_for('static', filename='images/bubble4.png') }}" alt="">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="digital__content">
+      <h2 class="digital__title">
+        Digital-решения, которые<br>
+        работают на ваш успех
+      </h2>
+
+      <p class="digital__lead">
+        Мы создаём сайты и приложения, которые не просто красиво выглядят,
+        а помогают бизнесу расти, привлекать клиентов и оставаться на шаг
+        впереди конкурентов.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+ <div class="container">
+    <h2 class="portfolio__title">ПОРТФОЛИО</h2>
+    <p class="portfolio__desc">
+      Наше портфолио — не просто красивые сайты и приложения. Это решения, которые привлекают клиентов, упрощают работу и увеличивают прибыль. Каждая работа продумана до деталей, чтобы ваш бизнес был на шаг впереди конкурентов, без лишних забот и технических сложностей.
+    </p>
+    <div class="divider"></div>
+
+    <div class="carousel" aria-label="Карусель портфолио">
+      <button class="nav nav--prev" id="prev" aria-label="Предыдущий проект">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="track" id="track">
+        <article class="slide" data-title="Корпоративный сайт IT-компании" data-sub="Дизайн + разработка, высокая конверсия">
+          <img src="{{ url_for('static', filename='images/site3.png') }}" alt="Проект 1">
+          <div class="caption">
+            <h3>Корпоративный сайт Pro Потолок </h3>
+            <p>Дизайн + разработка, высокая конверсия</p>
+          </div>
+        </article>
+
+        <article class="slide" data-title="Лендинг для сервиса недвижимости" data-sub="Сильный первый экран и быстрые заявки">
+          <img src="{{ url_for('static', filename='images/site2.png') }}" alt="Проект 2">
+          <div class="caption">
+            <h3>Эффективный сайт для химической промышленности</h3>
+            <p>Сильный визуальный первый экран и быстрый поток заявок</p>
+          </div>
+        </article>
+
+        <article class="slide" data-title="Образовательная платформа" data-sub="UX + личный кабинет + платежи">
+          <img src="{{ url_for('static', filename='images/site1.png') }}" alt="Проект 3">
+          <div class="caption">
+           <h3>Лендинг для барбершопа</h3>
+            <p>Разработка сайтов от DariX: стильный дизайн, высокая конверсия и готовность к росту вашего бизнеса.</p>
+          </div>
+        </article>
+
+        <article class="slide" data-title="Сайт для услуг" data-sub="Минимализм, доверие, заявка в 1 клик">
+          <img src="{{ url_for('static', filename='images/app1.png') }}" alt="Проект 4">
+          <div class="caption">
+            <h3>Десктопное приложение для салона связи</h3>
+            <p>DariX разрабатывает удобные приложения: учет клиентов, база данных и полный контроль над бизнесом.</p>
+          </div>
+        </article>
+      </div>
+
+      <button class="nav nav--next" id="next" aria-label="Следующий проект">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="dots" id="dots" aria-hidden="false"></div>
+    </div>
+  </div>
+  </section>
+
+  <div id="calculator" class="wrap">
+    <h1>Калькулятор сайтов</h1>
+  
+    <div class="bg-art" aria-hidden="true">
+          <img class="bg-art__img bg-art__img--left" src="{{ url_for('static', filename='images/artdeco.png') }}" alt="">
+          <img class="bg-art__img bg-art__img--right" src="{{ url_for('static', filename='images/oneRight.png') }}" alt="">
+        </div>
+
+    <section class="window pop" aria-label="Калькулятор стоимости проекта">
+
+       
+
+      <div class="window__top">
+        <div class="dots" aria-hidden="true">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+
+        <div class="window__tools">
+          <button class="toolBtn" id="resetBtn" title="Сброс">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M21 3v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="toolBtn" id="copyBtn" title="Скопировать сумму">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 9h10v10H9V9Z" stroke="currentColor" stroke-width="2" />
+              <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="window__body">
+        <!-- Тип проекта -->
+        <div class="card pop" style="animation-delay:.05s">
+          <div class="card__head">
+            <h2 class="card__title">Тип проекта</h2>
+          </div>
+          <div class="list" id="projectType">
+            <div class="row is-selected" data-group="type" data-value="landing">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 10h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="row__label">Сайт визитка</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="row" data-group="type" data-value="shop"> <div class="icon"> <svg viewBox="0 0 24 24" fill="none"> <path d="M6 7h15l-1.5 13H6.5L6 7Z" stroke="currentColor" stroke-width="2"/> 
+              <path d="M8 7a4 4 0 0 1 8 0" stroke="currentColor" stroke-width="2"/> </svg> 
+            </div> 
+            <div class="row__label">Онлайн-магазин</div> 
+              <div class="row__check"> <svg viewBox="0 0 24 24" fill="none"> 
+                <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> 
+              </div> 
+            </div> 
+          
+            <div class="row" data-group="type" data-value="app"> <div class="icon"> <svg viewBox="0 0 24 24" fill="none"> 
+            <path d="M8 3h8a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="2"/> <path d="M9 7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> </svg>
+           </div> <div class="row__label">Мобильное приложение</div>
+            <div class="row__check"> <svg viewBox="0 0 24 24" fill="none"> 
+              <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg> 
+            </div> </div>
+
+
+            <div class="row" data-group="type" data-value="corporate">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 10h18v10H3V10Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M7 10V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="row__label">Корпоративный сайт</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="row" data-group="type" data-value="crm">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                  <path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="row__label">CRM / внутренняя система</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="row" data-group="type" data-value="portal">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h7v7H4V4Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M13 4h7v7h-7V4Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M4 13h7v7H4v-7Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M13 13h7v7h-7v-7Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="row__label">B2B / B2C портал</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="row" data-group="type" data-value="automation">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M4.2 6.2l2.8 2.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M17 17l2.8 2.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="row__label">Автоматизация / боты</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="row" data-group="type" data-value="other">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+                  <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                  <circle cx="19" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="row__label">Другое / не знаю</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА (можно под будущие элементы, сейчас пустой “воздух” как в макете) -->
+        <div class="card pop" style="animation-delay:.08s; min-height: 220px; display:flex; align-items:center; justify-content:center;">
+          <div style="text-align:center; padding: 22px;">
+            <div style="font-size:18px; color: rgba(255,255,255,.75); font-weight:650;">Подсказка</div>
+            <div style="margin-top:8px; color: rgba(255,255,255,.55); line-height:1.5;">
+              Выбирай тип проекта, функционал и сроки — сумма пересчитается автоматически.
+            </div>
+          </div>
+        </div>
+
+        <!-- НИЖНИЕ КАРТОЧКИ -->
+        <div class="bottom">
+          <!-- Функционал -->
+          <div class="card card--small pop" style="animation-delay:.10s">
+            <div class="card__head">
+              <h3 class="card__title">Функционал</h3>
+            </div>
+            <div class="list" id="features">
+              <div class="row" data-group="feat" data-value="chat">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M21 12a8 8 0 0 1-8 8H7l-4 2 1.5-4.5A8 8 0 1 1 21 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="row__label">Онлайн чат</div>
+                <div class="row__check">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="row is-selected" data-group="feat" data-value="form">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="row__label">Форма обратной связи</div>
+                <div class="row__check">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="row" data-group="feat" data-value="pay">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 7h16v10H4V7Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M4 11h16" stroke="currentColor" stroke-width="2"/>
+                    <path d="M7 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="row__label">Онлайн-оплата</div>
+                <div class="row__check">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="row is-selected" data-group="feat" data-value="anim">
+                <div class="icon">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3v18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5 8h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7 12h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M9 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="row__label">Анимации и эффекты</div>
+                <div class="row__check">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="row" data-group="feat" data-value="integrations">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="18" cy="6" r="3" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="18" cy="18" r="3" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8.5 10.5 15.5 7.5M8.5 13.5 15.5 16.5" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="row__label">Интеграции и API</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="row" data-group="feat" data-value="responsive">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+                  <path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="row__label">Мобильная адаптация</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="row" data-group="feat" data-value="seo">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M11 3a8 8 0 1 0 5.3 14l4.4 4.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="11" cy="11" r="4" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="row__label">SEO-оптимизация</div>
+              <div class="row__check">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <!-- Сроки -->
+          <div class="card card--small pop" style="animation-delay:.12s">
+            <div class="card__head">
+              <h3 class="card__title">Сроки</h3>
+            </div>
+            <div class="pills" id="timing">
+              <button class="pill is-selected" data-group="time" data-value="fast" type="button">Вчера</button>
+              <button class="pill" data-group="time" data-value="normal" type="button">Быстрее</button>
+              <button class="pill" data-group="time" data-value="calm" type="button">Не спешим</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="result pop" style="animation-delay:.18s" aria-live="polite">
+      <div class="price"><span>=</span><span id="price">19900</span><small>₽</small></div>
+      <div class="hint" id="hint">Хороший выбор — программисты DariX одобряют</div>
+      <button class="send-btn" id="sendBtn">
+        <span class="send-btn__icon">✈️</span>
+        <span class="send-btn__text">Отправить расчёт в чат</span>
+      </button>
+    </section>
+
+  </div>
+
+  <section class="tech-section" id="tech">
+<div class="tech-wrap">
+  <h2 class="tech-title">Лучшие технологии</h2>
+
+  <div class="marquee" data-speed="0.35" data-dir="right">
+    <div class="marquee__track">
+      <!-- 1-я линия -->
+      <div class="tech-item">🐍 Python</div>
+      <div class="tech-item">☕ Java</div>
+      <div class="tech-item">API</div>
+      <div class="tech-item">🤖 Android</div>
+      <div class="tech-item"> iOS</div>
+
+      <!-- дубль (обязательно для бесшовности) -->
+      <div class="tech-item">🐍 Python</div>
+      <div class="tech-item">☕ Java</div>
+      <div class="tech-item">API</div>
+      <div class="tech-item">🤖 Android</div>
+      <div class="tech-item"> iOS</div>
+    </div>
+  </div>
+
+  <div class="marquee" data-speed="0.45" data-dir="left">
+    <div class="marquee__track">
+      <!-- 2-я линия -->
+      <div class="tech-item">🧠 OpenAI</div>
+      <div class="tech-item">🐙 GitHub</div>
+      <div class="tech-item">HTML5</div>
+      <div class="tech-item">JS</div>
+      <div class="tech-item">CSS3</div>
+
+      <!-- дубль -->
+      <div class="tech-item">🧠 OpenAI</div>
+      <div class="tech-item">🐙 GitHub</div>
+      <div class="tech-item">HTML5</div>
+      <div class="tech-item">JS</div>
+      <div class="tech-item">CSS3</div>
+    </div>
+  </div>
+
+  <div class="marquee" data-speed="0.35" data-dir="right">
+    <div class="marquee__track">
+      <!-- 3-я линия -->
+      <div class="tech-item">📄 PDF</div>
+      <div class="tech-item">🎨 Figma</div>
+      <div class="tech-item">Swift</div>
+      <div class="tech-item">DB</div>
+      <div class="tech-item">⚡ Node</div>
+
+      <!-- дубль -->
+      <div class="tech-item">📄 PDF</div>
+      <div class="tech-item">🎨 Figma</div>
+      <div class="tech-item">Swift</div>
+      <div class="tech-item">DB</div>
+      <div class="tech-item">⚡ Node</div>
+    </div>
+    </div>
+    </div>
+  <div class="fade-bottom" aria-hidden="true"></div>
+
+  </section>
+
+  <footer class="footer">
+  <div class="footer__bg" aria-hidden="true"></div>
+
+  <div class="footer__container">
+    <!-- левый арт -->
+    <div class="footer__art" aria-hidden="true">
+      <img src="{{ url_for('static', filename='images/footerImage.png') }}" alt="">
+    </div>
+
+    <!-- правая часть -->
+    <div class="footer__content">
+      <div class="footer__brand">
+        <div class="footer__logo">DariX</div>
+        <div class="footer__subtitle">Мы в соцсетях</div>
+      </div>
+
+      <div class="footer__social glass gsap-hover">
+  <!-- Telegram -->
+  <a class="glass__btn" href="https://t.me/darixteam" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M21.8 4.6 3.3 11.9c-1.3.5-1.3 1.3-.2 1.6l4.7 1.5 1.8 5.6c.2.6.1.8.8.8.5 0 .7-.2 1-.5l2.3-2.3 4.7 3.5c.9.5 1.5.2 1.7-.8l3.2-15.2c.3-1.2-.4-1.7-1.3-1.3Z" fill="currentColor" opacity=".95"/>
+      <path d="M8.3 14.7 17.8 8.8c.5-.3 1-.1.6.3l-7.9 7.2-.3 3.2c-.1.5-.3.6-.6.1l-1.3-4.9Z" fill="currentColor" opacity=".55"/>
+    </svg>
+  </a>
+
+  <!-- VK -->
+  <a class="glass__btn" href="https://vk.ru/darik097" aria-label="VK">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M12.8 17.8h-1.1c-4.3 0-6.7-3-7.8-8.7-.1-.5.2-.9.8-.9H6c.4 0 .7.3.8.7.6 3.1 2.1 5.4 3.4 5.4.5 0 .8-.3.8-1.1V11c0-1.3-.4-1.8-1.2-2 .1-.3.6-.7 1.5-.7h2c.4 0 .6.2.6.7v3.4c0 .4.2.6.4.6.5 0 1.8-1.9 2.7-4 .1-.3.4-.6.8-.6h1.6c.5 0 .7.3.6.7-.3 1.3-2 3.8-2 3.8-.2.3-.3.5 0 .9.2.3 1 1.1 1.6 1.8.6.7 1.1 1.3 1.2 1.7.1.4-.1.8-.6.8h-1.7c-.5 0-.9-.2-1.2-.6-.5-.7-1.3-1.8-1.8-2.4-.4-.4-.6-.6-.8-.6-.3 0-.4.2-.4.7v2.2c0 .5-.2.7-.7.7Z"
+        fill="currentColor"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a class="glass__btn" href="https://www.instagram.com/darix_company?igsh=bWd4ZmhkeG1sNms5&utm_source=qr" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M7.5 3.5h9A4 4 0 0 1 20.5 7.5v9a4 4 0 0 1-4 4h-9a4 4 0 0 1-4-4v-9a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="2"/>
+      <path d="M17.2 7.2h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </a>
+</div>
+
+<!-- КОНТАКТЫ -->
+<div class="footer__contacts-new">
+  <a href="tel:+79500130041" class="contact-item">
+    <span class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M6.6 10.8c1.4 2.7 3.9 5.2 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.5 2.8.8 4.4.8.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.3 2.7 13.4 2.7 3.9c0-.6.4-1 1-1H7c.6 0 1 .4 1 1 0 1.6.3 3.1.8 4.4.1.4 0 .9-.2 1.2l-2 2.3Z"
+          fill="currentColor"/>
+      </svg>
+    </span>
+    <span class="contact-text">+7 950 013-00-41</span>
+  </a>
+
+  <a href="mailto:dinardarskii@yandex.ru" class="contact-item">
+    <span class="contact-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"
+          stroke="currentColor" stroke-width="2"/>
+        <path d="m22 8-10 6L2 8"
+          stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </span>
+    <span class="contact-text">dinardarskii@yandex.ru</span>
+  </a>
+</div>
+
+
+      <!-- НИЗ -->
+      <div class="footer__bottom">
+        <a href="/privacy" class="footer__policy">Политика конфиденциальности</a>
+        <span class="footer__sep">•</span>
+        <span class="footer__rights">Все права защищены</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <div class="modal" id="orderModal">
+  <div class="modal__overlay"></div>
+
+  <div class="modal__box">
+    <button class="modal__close">&times;</button>
+
+    <h3 class="modal__title">Оставить заявку</h3>
+    <p class="modal__subtitle">
+      Свяжемся с вами и обсудим проект
+    </p>
+
+    <form id="orderForm" class="modal__form">
+      <input
+        type="text"
+        name="name"
+        placeholder="Ваше имя"
+        required
+      >
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Телефон"
+        required
+      >
+
+      <button type="submit" class="modal__submit">
+        Отправить заявку
+      </button>
+
+      <p class="modal__note">
+        Нажимая кнопку, вы соглашаетесь на обработку данных
+      </p>
+    </form>
+
+        <!-- divider -->
+    <div class="modal__divider">
+      <span>или</span>
+    </div>
+
+    <!-- direct contact -->
+    <div class="modal__direct">
+      <div class="modal__direct-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M6.6 10.8c1.4 2.7 3.9 5.2 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.5 2.8.8 4.4.8.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.3 2.7 13.4 2.7 3.9c0-.6.4-1 1-1H7c.6 0 1 .4 1 1 0 1.6.3 3.1.8 4.4.1.4 0 .9-.2 1.2l-2 2.3Z"
+            fill="currentColor"/>
+        </svg>
+      </div>
+
+      <div class="modal__direct-text">
+        <span class="modal__direct-label">Можно позвонить напрямую</span>
+        <a href="tel:+79500130041" class="modal__direct-phone">
+          +7 950 013-00-41
+        </a>
+      </div>
+    </div>
+
+
+    <div class="modal__success">
+      <div class="check">✓</div>
+      <p>Заявка отправлена</p>
+    </div>
+  </div>
+</div>
+
+  <div class="phone-modal" id="phoneModal" aria-hidden="true">
+  <div class="phone-modal__overlay"></div>
+
+  <div class="phone-modal__box pop">
+    <h3>Оставьте номер 📞</h3>
+    <p>Мы отправим расчёт и свяжемся с вами</p>
+
+    <input
+      type="tel"
+      id="phoneInput"
+      placeholder="+7 (___) ___-__-__"
+      inputmode="tel"
+      autocomplete="tel"
+    />
+
+    <div class="phone-modal__actions">
+      <button class="phone-btn phone-btn--ghost" id="cancelPhone">Отмена</button>
+      <button class="phone-btn phone-btn--main" id="confirmSend">Отправить</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Подключаем JS -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+
+  
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/calculate.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/icon.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animHero.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animAbout.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animServ.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animDigit.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/animCalc.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
+
+  
+
+</body>
+</html>
