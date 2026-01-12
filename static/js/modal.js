@@ -1,65 +1,86 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log('JS loaded');
+  console.log('JS loaded');
+  const modal = document.getElementById('orderModal');
+  console.log(modal);
+  const openBtns = document.querySelectorAll('.js-open-modal');
+  const closeBtn = modal.querySelector('.modal__close');
+  const overlay = modal.querySelector('.modal__overlay');
+  const form = document.getElementById('orderForm');
+  const success = modal.querySelector('.modal__success');
+  const phoneInput = form.phone;
 
-    const modal = document.getElementById('orderModal');
-    console.log(modal);
+  // ====== Маска для телефона ======
+  phoneInput.addEventListener('input', () => {
+    let val = phoneInput.value.replace(/\D/g, ''); // оставляем только цифры
+    if (val.length > 11) val = val.slice(0,11);   // максимум 11 цифр (Россия)
+    
+    let formatted = '+7 ';
+    if (val.length > 1) formatted += '(' + val.slice(1,4);
+    if (val.length >= 5) formatted += ') ' + val.slice(4,7);
+    if (val.length >= 8) formatted += '-' + val.slice(7,9);
+    if (val.length >= 10) formatted += '-' + val.slice(9,11);
 
-    const openBtns = document.querySelectorAll('.js-open-modal');
-    const closeBtn = modal.querySelector('.modal__close');
-    const overlay = modal.querySelector('.modal__overlay');
-    const form = document.getElementById('orderForm');
-    const success = modal.querySelector('.modal__success');
+    phoneInput.value = formatted;
+  });
 
-    // ОТКРЫТИЕ МОДАЛКИ
-    openBtns.forEach(btn => {
-        btn.addEventListener('click', e => {
-            e.preventDefault();
-            modal.classList.add('is-open');
-            document.body.style.overflow = 'hidden';
-        });
+  phoneInput.addEventListener('focus', () => {
+    if (!phoneInput.value) phoneInput.value = '+7 ';
+  });
+
+  phoneInput.addEventListener('blur', () => {
+    if (phoneInput.value === '+7 ') phoneInput.value = '';
+  });
+
+  // ====== ОТКРЫТИЕ МОДАЛКИ ======
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
     });
+  });
 
-    // ЗАКРЫТИЕ МОДАЛКИ
-    [closeBtn, overlay].forEach(el => {
-        el.addEventListener('click', () => {
-            modal.classList.remove('is-open');
-            document.body.style.overflow = '';
-        });
+  // ====== ЗАКРЫТИЕ МОДАЛКИ ======
+  [closeBtn, overlay].forEach(el => {
+    el.addEventListener('click', () => {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
     });
+  });
 
-    // ESC
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-            modal.classList.remove('is-open');
-            document.body.style.overflow = '';
-        }
-    });
+  // ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  });
 
-    // ОТПРАВКА ФОРМЫ
-    form.addEventListener('submit', async e => {
-        e.preventDefault();
-        const data = {
-            name: form.name.value,
-            phone: form.phone.value,
-            timestamp: new Date().toLocaleString()
-        };
+  // ====== ОТПРАВКА ФОРМЫ ======
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const data = {
+      name: form.name.value,
+      phone: phoneInput.value,
+      timestamp: new Date().toLocaleString()
+    };
+    try {
+      const res = await fetch('/consultation_form', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }
+    } catch (err) {
+      alert('Ошибка отправки 😅');
+    }
+  });
 
-        try {
-            const res = await fetch('/consultation_form', {
-                method: 'POST',
-                headers: {'Content-Type':'application/json'},
-                body: JSON.stringify(data)
-            });
-
-            if (res.ok) {
-                form.style.display = 'none';
-                success.style.display = 'block';
-            }
-        } catch (err) {
-            alert('Ошибка отправки 😅');
-        }
-    });
 });
+
 
 const direct = document.querySelector(".modal__direct");
 const icon = direct.querySelector(".modal__direct-icon");

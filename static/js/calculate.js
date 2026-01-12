@@ -1,32 +1,30 @@
 // ====== CONFIG PRICES ======
     const PRICES = {
       type: {
-        landing: 1200,
-        shop: 4200,
-        app: 7800,
-        other: 1000,
-        automation: 900,
-        portal: 5000,
-        crm: 8000,
-        corporate: 3500,
-
-
+        landing: 25000,
+        shop: 125000,
+        app: 93000,
+        other: 900,
+        automation: 9000,
+        portal: 15000,
+        crm: 79000,
+        corporate: 45000,
       },
 
       features: {
         // базовые
-        chat: 350,
-        form: 250,
-        pay: 900,
+        chat: 5250,
+        form: 2500,
+        pay: 11900,
         anim: 450,
 
         // новые
-        seo: 600,            // SEO-оптимизация
-        analytics: 500,      // аналитика и метрики
-        speed: 550,          // высокая скорость загрузки
-        security: 700,       // защита и безопасность
-        responsive: 400,     // мобильная адаптация
-        integrations: 950    // интеграции (TG, CRM, API)
+        seo: 6000,            // SEO-оптимизация
+        analytics: 5000,      // аналитика и метрики
+        speed: 11000,          // высокая скорость загрузки
+        security: 17000,       // защита и безопасность
+        responsive: 1400,     // мобильная адаптация
+        integrations: 19500    // интеграции (TG, CRM, API)
       },
 
       time: {
@@ -145,8 +143,7 @@
     // init
     compute();
 
-   
-    // ====== MODAL ELEMENTS ======
+   // ====== MODAL ELEMENTS ======
 const modal = document.getElementById("phoneModal");
 const phoneInput = document.getElementById("phoneInput");
 const sendBtn = document.getElementById("sendBtn");
@@ -154,14 +151,30 @@ const confirmBtn = document.getElementById("confirmSend");
 const cancelBtn = document.getElementById("cancelPhone");
 const overlay = document.querySelector(".phone-modal__overlay");
 
+// ====== ФУНКЦИИ ДЛЯ МАСКИ ======
+function formatPhone(value) {
+  // оставляем только цифры
+  let val = value.replace(/\D/g, '');
+  if (val.length > 11) val = val.slice(0, 11);
+
+  let formatted = '+7';
+  if (val.length > 1) formatted += ' (' + val.slice(1, 4);
+  if (val.length >= 5) formatted += ') ' + val.slice(4, 7);
+  if (val.length >= 8) formatted += '-' + val.slice(7, 9);
+  if (val.length >= 10) formatted += '-' + val.slice(9, 11);
+
+  return formatted;
+}
+
 // ====== OPEN MODAL ======
 sendBtn.addEventListener("click", () => {
   modal.classList.add("is-open");
   phoneInput.focus();
+  if (!phoneInput.value) phoneInput.value = '+7 ';
 });
 
 // ====== CLOSE MODAL ======
-function closeModal(){
+function closeModal() {
   modal.classList.remove("is-open");
   phoneInput.value = "";
 }
@@ -169,12 +182,24 @@ function closeModal(){
 cancelBtn.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
 
+// ====== МАСКА ВВОДА ======
+phoneInput.addEventListener("input", () => {
+  phoneInput.value = formatPhone(phoneInput.value);
+});
+
+phoneInput.addEventListener("focus", () => {
+  if (!phoneInput.value) phoneInput.value = '+7 ';
+});
+
+phoneInput.addEventListener("blur", () => {
+  if (phoneInput.value === '+7 ') phoneInput.value = '';
+});
+
 // ====== SEND DATA TO BACKEND ======
 confirmBtn.addEventListener("click", async () => {
-
   const phone = phoneInput.value.trim();
 
-  if(phone.length < 6){
+  if (phone.replace(/\D/g, '').length < 6) {
     hintEl.textContent = "Введите корректный номер телефона 📞";
     phoneInput.focus();
     return;
@@ -238,7 +263,7 @@ ${phone}
 
   hintEl.textContent = "Отправляем расчёт… 🚀";
 
-  try{
+  try {
     const res = await fetch("/submit_request", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -249,7 +274,7 @@ ${phone}
       })
     });
 
-    if(res.ok){
+    if (res.ok) {
       hintEl.textContent = "Заявка отправлена ✅ Мы свяжемся с вами";
     } else {
       throw new Error();
@@ -261,4 +286,3 @@ ${phone}
 
   setTimeout(compute, 2500);
 });
-

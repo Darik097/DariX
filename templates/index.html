@@ -1,14 +1,66 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  <!-- =========================
+       BASIC
+  ========================== -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="yandex-verification" content="9b84bcaa40975814" />
 
+  <title>DariX — разработка сайтов, лендингов, приложений и автоматизация бизнеса под ключ</title>
+
+  <!-- =========================
+       SEO META
+  ========================== -->
+  <meta name="description" content="DariX — разработка современных сайтов, интернет-магазинов, веб-приложений и автоматизация бизнеса. Дизайн, SEO, скорость, безопасность. Работаем на результат.">
+  <meta name="keywords" content="разработка сайтов, веб студия, создание сайтов, интернет магазин, веб приложение, автоматизация бизнеса, SEO, DariX, Лендинг, Многостраничный сайт под ключ, Дарский Динар">
+  <meta name="author" content="DariX">
+
+  <!-- =========================
+       INDEXING
+  ========================== -->
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+
+  <!-- =========================
+       OPEN GRAPH (SOCIAL)
+  ========================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DariX — разработка сайтов и IT-решений">
+  <meta property="og:description" content="Создаём сайты и приложения, которые приносят клиентов. Дизайн, скорость, SEO и автоматизация.">
+  <meta property="og:url" content="https://darixteam.ru">
+  <meta property="og:image" content="https://darixteam.ru/static/images/og-image.png">
+  <meta property="og:site_name" content="DariX">
+
+  <!-- =========================
+       TWITTER
+  ========================== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DariX — сайты и IT-разработка">
+  <meta name="twitter:description" content="Современные сайты, приложения и автоматизация бизнеса под ключ.">
+  <meta name="twitter:image" content="https://darixteam.ru/static/images/og-image.">
+
+  <!-- =========================
+       FAVICONS
+  ========================== -->
+  <link rel="icon" href="/static/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/static/favicon/site.webmanifest">
+
+  <!-- =========================
+       FONTS
+  ========================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- =========================
+       STYLES
+  ========================== -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
@@ -19,8 +71,44 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/phone.css') }}">
-</head>
 
+  <!-- =========================
+       STRUCTURED DATA (JSON-LD)
+  ========================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DariX",
+    "url": "https://darixteam.ru",
+    "logo": "https://darixteam.ru/static/images/og-image.png",
+    "description": "Разработка сайтов, приложений и автоматизация бизнеса",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+7-950-013-00-41",
+      "contactType": "sales"
+    },
+    "sameAs": [
+      "https://vk.com/darik097",
+      "https://t.me/darixteam"
+    ]
+  }
+  </script>
+
+    <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106224125', 'ym');
+
+      ym(106224125, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/106224125" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
 
 
 <body>
