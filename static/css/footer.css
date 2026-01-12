@@ -64,6 +64,7 @@ html, body{
   font-weight: 650;
   letter-spacing: .01em;
   line-height: 1;
+  font-family: 'Neuropol', sans-serif;
 }
 
 .footer__subtitle{
@@ -208,6 +209,7 @@ html, body{
   display: flex;
   align-items: center;
   gap: 14px;
+  font-family: 'Manrope', sans-serif;
 
   padding: 14px 16px;
   border-radius: 16px;

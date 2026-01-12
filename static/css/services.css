@@ -146,10 +146,10 @@
 .services-grid{
   display: flex;
   gap: 16px;
-  padding: 4px 16px 120px; /* 👈 запас снизу */
+  padding: 4px 16px 24px;
 
   overflow-x: auto;
-  overflow-y: visible;   /* ✅ ВОТ ОНО */
+  overflow-y: hidden;   /* 🔥 убрали вертикальный скрол */
 
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -158,32 +158,35 @@
 }
 .services-grid::-webkit-scrollbar{ display:none; }
 
+
   /* второй ряд убираем полностью */
   .services-row2{
     all: unset;
     display: contents;
   }
 
-  /* ===== CARD ===== */
   .service-card{
-    position: relative;
-    align-items: center;
-    flex: 0 0 86%;
-    max-width: 86%;
-    min-height: auto !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    padding: 22px 20px;
-    border-radius: 20px;
+  flex: 0 0 86%;
+  max-width: 86%;
 
-    scroll-snap-align: center;
-     
-    overflow: visible;   /* 🔥 ВАЖНО */
+  height: 260px;          /* 🔒 единая высота */
+  padding: 22px 20px 42px;
 
-    /* MICRO ANIMATION */
-    opacity: 0;
-    transform: translateY(20px) scale(.96);
-    animation: card-in .6s ease-out forwards;
-  }
+  border-radius: 20px;
+  scroll-snap-align: center;
+
+  overflow: visible;
+
+  opacity: 0;
+  transform: translateY(20px) scale(.96);
+  animation: card-in .6s ease-out forwards;
+}
+
 
   /* по порядку */
   .card--1{ animation-delay: .05s; }
@@ -220,26 +223,27 @@
     font-size: 14px;
   }
 
-  /* ===== BUBBLE ===== */
   .card-bubble{
     position: absolute;
     right: -20px;
+    bottom: 130px;        
     width: 140px;
     pointer-events: none;
-    z-index: 3;  
-    transform: translateY(70px)     
-  }
+    z-index: 3;
+    }
+
 
   /* лёгкое свечение */
   .card-bubble::after{
-    content:'';
-    position:absolute;
-    inset:-20%;
-    background: radial-gradient(
-      circle,
-      rgba(160,120,255,.25),
-      transparent 70%
-    );
-    z-index:-1;
-  }
+      content:'';
+      position:absolute;
+      inset:-30%;
+      background: radial-gradient(
+        circle,
+        rgba(160,120,255,.28),
+        transparent 70%
+      );
+      z-index:-1;
+    }
+
 }
