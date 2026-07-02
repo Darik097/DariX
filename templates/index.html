@@ -9,14 +9,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="yandex-verification" content="9b84bcaa40975814" />
 
-  <title>DariX — разработка сайтов, лендингов, приложений и автоматизация бизнеса под ключ</title>
+  <title>Разработка сайтов и веб-приложений под ключ — DariX</title>
 
   <!-- =========================
        SEO META
   ========================== -->
-  <meta name="description" content="DariX — разработка современных сайтов, интернет-магазинов, веб-приложений и автоматизация бизнеса. Дизайн, SEO, скорость, безопасность. Работаем на результат.">
-  <meta name="keywords" content="разработка сайтов, веб студия, создание сайтов, интернет магазин, веб приложение, автоматизация бизнеса, SEO, DariX, Лендинг, Многостраничный сайт под ключ, Дарский Динар">
+  <meta name="description" content="DariX разрабатывает сайты, интернет-магазины, веб-приложения и автоматизацию для бизнеса: дизайн, адаптивная верстка, SEO-база, скорость и поддержка.">
+  <meta name="keywords" content="разработка сайтов, создание сайтов, сайт под ключ, интернет магазин, веб приложение, автоматизация бизнеса, SEO, DariX, Дарский Динар">
   <meta name="author" content="DariX">
+  <link rel="canonical" href="https://darixteam.ru/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
   <!-- =========================
        INDEXING
@@ -28,19 +30,20 @@
        OPEN GRAPH (SOCIAL)
   ========================== -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="DariX — разработка сайтов и IT-решений">
-  <meta property="og:description" content="Создаём сайты и приложения, которые приносят клиентов. Дизайн, скорость, SEO и автоматизация.">
+  <meta property="og:title" content="DariX — разработка сайтов и веб-приложений">
+  <meta property="og:description" content="Сайты, интернет-магазины, приложения и автоматизация бизнеса под ключ: дизайн, скорость, SEO-база и поддержка.">
   <meta property="og:url" content="https://darixteam.ru">
   <meta property="og:image" content="https://darixteam.ru/static/images/og-image.png">
   <meta property="og:site_name" content="DariX">
+  <meta property="og:locale" content="ru_RU">
 
   <!-- =========================
        TWITTER
   ========================== -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DariX — сайты и IT-разработка">
-  <meta name="twitter:description" content="Современные сайты, приложения и автоматизация бизнеса под ключ.">
-  <meta name="twitter:image" content="https://darixteam.ru/static/images/og-image.">
+  <meta name="twitter:title" content="DariX — разработка сайтов и IT-решений">
+  <meta name="twitter:description" content="Сайты, приложения и автоматизация бизнеса под ключ.">
+  <meta name="twitter:image" content="https://darixteam.ru/static/images/og-image.png">
 
   <!-- =========================
        FAVICONS
@@ -54,13 +57,6 @@
   <!-- =========================
        FONTS
   ========================== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- =========================
-       STYLES
-  ========================== -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
@@ -69,8 +65,6 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/calculator.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/iconStyle.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/phone.css') }}">
 
   <!-- =========================
        STRUCTURED DATA (JSON-LD)
@@ -78,36 +72,72 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "ProfessionalService",
     "name": "DariX",
     "url": "https://darixteam.ru",
     "logo": "https://darixteam.ru/static/images/og-image.png",
-    "description": "Разработка сайтов, приложений и автоматизация бизнеса",
+    "image": "https://darixteam.ru/static/images/og-image.png",
+    "description": "Разработка сайтов, интернет-магазинов, веб-приложений и автоматизация бизнеса",
+    "areaServed": "RU",
+    "priceRange": "₽₽",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+7-950-013-00-41",
-      "contactType": "sales"
+      "contactType": "customer service",
+      "availableLanguage": "ru"
     },
     "sameAs": [
       "https://vk.com/darik097",
       "https://t.me/darixteam"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Услуги DariX",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Разработка сайтов под ключ"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Разработка веб-приложений"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Автоматизация бизнес-процессов"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "DariX",
+    "url": "https://darixteam.ru/",
+    "inLanguage": "ru-RU",
+    "publisher": {
+      "@type": "Organization",
+      "name": "DariX"
+    },
+    "about": [
+      "разработка сайтов",
+      "создание сайтов под ключ",
+      "веб-приложения",
+      "автоматизация бизнеса"
     ]
   }
   </script>
-
-    <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106224125', 'ym');
-
-      ym(106224125, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/106224125" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
 </head>
 
 
@@ -128,7 +158,7 @@
         <a class="nav__link" href="#calculator">Калькулятор</a>
         
       </nav>
-      <a href="#call" class="call-btn js-open-modal">Звонок</a>
+      <a href="tel:+79500130041" class="call-btn">Звонок</a>
     </div>
   </header>
   <div class="header-ghost"></div>
@@ -142,10 +172,10 @@
         <p class="lead">Опытная команда и современные технологии — всё, чтобы ваш бизнес стал заметнее и прибыльнее.</p>
         <div class="cta">
           <a
-            class="btn btn-primary js-open-modal"
-            data-modal="#orderModal"
-            href="#">
-            Заказать сайт
+            class="btn btn-primary"
+            href="https://t.me/darixteam"
+            rel="noopener">
+            Написать в Telegram
            </a>
           <a class="btn btn-glass" id="calcBtn" href="#calc">Рассчитать стоимость</a>
         </div>
@@ -266,7 +296,7 @@
 </section>
 
 
- <div class="container">
+ <div class="container" id="portfolio">
     <h2 class="portfolio__title">ПОРТФОЛИО</h2>
     <p class="portfolio__desc">
       Наше портфолио — не просто красивые сайты и приложения. Это решения, которые привлекают клиентов, упрощают работу и увеличивают прибыль. Каждая работа продумана до деталей, чтобы ваш бизнес был на шаг впереди конкурентов, без лишних забот и технических сложностей.
@@ -289,11 +319,11 @@
           </div>
         </article>
 
-        <article class="slide" data-title="Лендинг для сервиса недвижимости" data-sub="Сильный первый экран и быстрые заявки">
+        <article class="slide" data-title="Лендинг для сервиса недвижимости" data-sub="Сильный первый экран и быстрый контакт">
           <img src="{{ url_for('static', filename='images/site2.png') }}" alt="Проект 2">
           <div class="caption">
             <h3>Эффективный сайт для химической промышленности</h3>
-            <p>Сильный визуальный первый экран и быстрый поток заявок</p>
+            <p>Сильный визуальный первый экран и понятный путь к контакту</p>
           </div>
         </article>
 
@@ -305,7 +335,7 @@
           </div>
         </article>
 
-        <article class="slide" data-title="Сайт для услуг" data-sub="Минимализм, доверие, заявка в 1 клик">
+        <article class="slide" data-title="Сайт для услуг" data-sub="Минимализм, доверие, быстрый контакт">
           <img src="{{ url_for('static', filename='images/app1.png') }}" alt="Проект 4">
           <div class="caption">
             <h3>Десктопное приложение для салона связи</h3>
@@ -326,7 +356,7 @@
   </section>
 
   <div id="calculator" class="wrap">
-    <h1>Калькулятор сайтов</h1>
+    <h2>Калькулятор сайтов</h2>
   
     <div class="bg-art" aria-hidden="true">
           <img class="bg-art__img bg-art__img--left" src="{{ url_for('static', filename='images/artdeco.png') }}" alt="">
@@ -334,8 +364,6 @@
         </div>
 
     <section class="window pop" aria-label="Калькулятор стоимости проекта">
-
-       
 
       <div class="window__top">
         <div class="dots" aria-hidden="true">
@@ -515,14 +543,14 @@
                 </div>
               </div>
 
-              <div class="row is-selected" data-group="feat" data-value="form">
+              <div class="row is-selected" data-group="feat" data-value="contact">
                 <div class="icon">
                   <svg viewBox="0 0 24 24" fill="none">
                     <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/>
                     <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </div>
-                <div class="row__label">Форма обратной связи</div>
+                <div class="row__label">Контактные кнопки</div>
                 <div class="row__check">
                   <svg viewBox="0 0 24 24" fill="none">
                     <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -630,10 +658,10 @@
     <section class="result pop" style="animation-delay:.18s" aria-live="polite">
       <div class="price"><span>=</span><span id="price">19900</span><small>₽</small></div>
       <div class="hint" id="hint">Хороший выбор — программисты DariX одобряют</div>
-      <button class="send-btn" id="sendBtn">
-        <span class="send-btn__icon">✈️</span>
-        <span class="send-btn__text">Отправить расчёт в чат</span>
-      </button>
+      <a class="send-btn" id="sendBtn" href="https://t.me/darixteam" rel="noopener">
+        <span class="send-btn__icon">✈</span>
+        <span class="send-btn__text">Обсудить расчёт в Telegram</span>
+      </a>
     </section>
 
   </div>
@@ -768,10 +796,47 @@
   </a>
 </div>
 
+<div class="footer__requisites" aria-label="Реквизиты исполнителя">
+  <div class="footer__requisites-title">Реквизиты</div>
+  <dl class="footer__requisites-list">
+    <div>
+      <dt>Исполнитель</dt>
+      <dd>ИП Дарский Динар</dd>
+    </div>
+    <div>
+      <dt>ОГРНИП</dt>
+      <dd>325920000016260</dd>
+    </div>
+    <div>
+      <dt>ИНН</dt>
+      <dd>027509143769</dd>
+    </div>
+    <div>
+      <dt>Вид предпринимательства</dt>
+      <dd>Индивидуальный предприниматель</dd>
+    </div>
+    <div>
+      <dt>Дата регистрации</dt>
+      <dd>25 июля 2025 г.</dd>
+    </div>
+    <div>
+      <dt>Регистратор</dt>
+      <dd>Межрайонная инспекция Федеральной налоговой службы №15 по Санкт-Петербургу</dd>
+    </div>
+    <div>
+      <dt>Дата постановки на учет</dt>
+      <dd>27 апреля 2026 г.</dd>
+    </div>
+    <div>
+      <dt>Налоговый орган</dt>
+      <dd>Межрайонная инспекция ФНС России №27 по Санкт-Петербургу</dd>
+    </div>
+  </dl>
+</div>
 
       <!-- НИЗ -->
       <div class="footer__bottom">
-        <a href="/privacy" class="footer__policy">Политика конфиденциальности</a>
+        <a href="/privacy" class="footer__policy">Политика приватности</a>
         <span class="footer__sep">•</span>
         <span class="footer__rights">Все права защищены</span>
       </div>
@@ -779,97 +844,10 @@
   </div>
 </footer>
 
-
-  <div class="modal" id="orderModal">
-  <div class="modal__overlay"></div>
-
-  <div class="modal__box">
-    <button class="modal__close">&times;</button>
-
-    <h3 class="modal__title">Оставить заявку</h3>
-    <p class="modal__subtitle">
-      Свяжемся с вами и обсудим проект
-    </p>
-
-    <form id="orderForm" class="modal__form">
-      <input
-        type="text"
-        name="name"
-        placeholder="Ваше имя"
-        required
-      >
-      <input
-        type="tel"
-        name="phone"
-        placeholder="Телефон"
-        required
-      >
-
-      <button type="submit" class="modal__submit">
-        Отправить заявку
-      </button>
-
-      <p class="modal__note">
-        Нажимая кнопку, вы соглашаетесь на обработку данных
-      </p>
-    </form>
-
-        <!-- divider -->
-    <div class="modal__divider">
-      <span>или</span>
-    </div>
-
-    <!-- direct contact -->
-    <div class="modal__direct">
-      <div class="modal__direct-icon">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M6.6 10.8c1.4 2.7 3.9 5.2 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.5 2.8.8 4.4.8.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.3 2.7 13.4 2.7 3.9c0-.6.4-1 1-1H7c.6 0 1 .4 1 1 0 1.6.3 3.1.8 4.4.1.4 0 .9-.2 1.2l-2 2.3Z"
-            fill="currentColor"/>
-        </svg>
-      </div>
-
-      <div class="modal__direct-text">
-        <span class="modal__direct-label">Можно позвонить напрямую</span>
-        <a href="tel:+79500130041" class="modal__direct-phone">
-          +7 950 013-00-41
-        </a>
-      </div>
-    </div>
-
-
-    <div class="modal__success">
-      <div class="check">✓</div>
-      <p>Заявка отправлена</p>
-    </div>
-  </div>
-</div>
-
-  <div class="phone-modal" id="phoneModal" aria-hidden="true">
-  <div class="phone-modal__overlay"></div>
-
-  <div class="phone-modal__box pop">
-    <h3>Оставьте номер 📞</h3>
-    <p>Мы отправим расчёт и свяжемся с вами</p>
-
-    <input
-      type="tel"
-      id="phoneInput"
-      placeholder="+7 (___) ___-__-__"
-      inputmode="tel"
-      autocomplete="tel"
-    />
-
-    <div class="phone-modal__actions">
-      <button class="phone-btn phone-btn--ghost" id="cancelPhone">Отмена</button>
-      <button class="phone-btn phone-btn--main" id="confirmSend">Отправить</button>
-    </div>
-  </div>
-</div>
-
   <!-- Подключаем JS -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  <script src="{{ url_for('static', filename='vendor/gsap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/ScrollTrigger.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/three.min.js') }}"></script>
 
   
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
@@ -880,7 +858,6 @@
   <script src="{{ url_for('static', filename='js/animAbout.js') }}"></script>
   <script src="{{ url_for('static', filename='js/animServ.js') }}"></script>
   <script src="{{ url_for('static', filename='js/animDigit.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
   <script src="{{ url_for('static', filename='js/animCalc.js') }}"></script>
     <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
 

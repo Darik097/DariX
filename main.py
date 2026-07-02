@@ -1,31 +1,8 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, Response, jsonify, render_template
 import os
-import traceback
-from datetime import datetime
-from flask import Flask, request, jsonify
-from telegram import Bot
-from telegram.constants import ParseMode
-import asyncio
 
 
 asgi_app = Flask(__name__)
-
-
-def escape_markdown_v2(text):
-    special_chars = r'\_*[]()~`>#+-=|{}.'
-    for char in special_chars:
-        text = text.replace(char, '\\' + char)
-    return text
-
-
-def send_message(text):
-    token = os.getenv("TG_TOKEN")
-    chat_id = os.getenv("TG_CHAT_ID")
-
-    bot = Bot(token=token)
-    safe_text = escape_markdown_v2(text)
-    asyncio.run(bot.send_message(chat_id=chat_id, text=safe_text,
-                parse_mode=ParseMode.MARKDOWN_V2))
 
 
 @asgi_app.route("/")
@@ -38,54 +15,33 @@ def privacy():
     return render_template("privacy.html", title="DariX — IT-решения")
 
 
-@asgi_app.route('/submit_request', methods=['POST'])
-def submit_request():
-    data = request.get_json()
+@asgi_app.route("/robots.txt")
+def robots_txt():
+    content = """User-agent: *
+Allow: /
 
-    name = data.get('name', 'Не указано')
-    phone = data.get('phone', 'Не указан')
-    message = data.get('message', '')
-    timestamp = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-
-    message_text = f"""
-📩 Новая заявка с калькулятора DariX
-
-👤 Источник: {name}
-📞 Телефон: {phone}
-🕓 Время: {timestamp}
-
-{message}
-    """
-
-    try:
-        send_message(message_text)
-        return jsonify({'result': True})
-    except Exception:
-        print(traceback.format_exc())
-        return jsonify({'result': False}), 500
+Sitemap: https://darixteam.ru/sitemap.xml
+"""
+    return Response(content, mimetype="text/plain")
 
 
-@asgi_app.route('/consultation_form', methods=['POST'])
-def consultation_form():
-    """Обработка формы консультации"""
-    data = request.get_json()
-    name = data.get('name', 'Не указано')
-    phone = data.get('phone', 'Не указан')
-    timestamp = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-
-    message_text = f"""
-📩 Новая консультация с сайта Darix
-👤 Имя: {name}
-📞 Телефон: {phone}
-🕓 Время заявки: {timestamp}
-    """
-
-    try:
-        send_message(message_text)
-        return jsonify({'result': True})
-    except Exception:
-        print(traceback.format_exc())
-        return jsonify({'result': False}), 500
+@asgi_app.route("/sitemap.xml")
+def sitemap_xml():
+    content = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://darixteam.ru/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://darixteam.ru/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
+"""
+    return Response(content, mimetype="application/xml")
 
 
 @asgi_app.route("/health_check")

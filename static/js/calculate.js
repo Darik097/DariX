@@ -14,13 +14,12 @@
       features: {
         // базовые
         chat: 5250,
-        form: 2500,
+        contact: 1500,
         pay: 11900,
         anim: 450,
 
         // новые
         seo: 6000,            // SEO-оптимизация
-        analytics: 5000,      // аналитика и метрики
         speed: 11000,          // высокая скорость загрузки
         security: 17000,       // защита и безопасность
         responsive: 1400,     // мобильная адаптация
@@ -38,7 +37,7 @@
     // ====== STATE ======
     const state = {
       type: "landing",
-      features: new Set(["form", "anim"]),
+      features: new Set(["contact", "anim"]),
       time: "fast"
     };
 
@@ -86,6 +85,7 @@
       state.type = row.dataset.value;
       selectOne(typeWrap, row, "is-selected");
       compute();
+      updateContactLink();
     });
 
     // ====== FEATURES (multi) ======
@@ -102,6 +102,7 @@
         state.features.add(val);
       }
       compute();
+      updateContactLink();
     });
 
     // ====== TIME (single pills) ======
@@ -112,24 +113,26 @@
       state.time = btn.dataset.value;
       selectOne(timeWrap, btn, "is-selected");
       compute();
+      updateContactLink();
     });
 
     // ====== TOOLS ======
     document.getElementById("resetBtn").addEventListener("click", () => {
       state.type = "landing";
-      state.features = new Set(["form", "anim"]);
+      state.features = new Set(["contact", "anim"]);
       state.time = "fast";
 
       // UI reset
       [...typeWrap.querySelectorAll(".row")].forEach(r => r.classList.toggle("is-selected", r.dataset.value==="landing"));
-      [...featWrap.querySelectorAll(".row")].forEach(r => r.classList.toggle("is-selected", ["form","anim"].includes(r.dataset.value)));
+      [...featWrap.querySelectorAll(".row")].forEach(r => r.classList.toggle("is-selected", ["contact","anim"].includes(r.dataset.value)));
       [...timeWrap.querySelectorAll(".pill")].forEach(p => p.classList.toggle("is-selected", p.dataset.value==="fast"));
 
       compute();
+      updateContactLink();
     });
 
     document.getElementById("copyBtn").addEventListener("click", async () => {
-      const txt = `${priceEl.textContent}$`;
+      const txt = `${priceEl.textContent} ₽`;
       try{
         await navigator.clipboard.writeText(txt);
         hintEl.textContent = "Скопировано ✅ Можешь отправлять клиенту";
@@ -143,72 +146,9 @@
     // init
     compute();
 
-   // ====== MODAL ELEMENTS ======
-const modal = document.getElementById("phoneModal");
-const phoneInput = document.getElementById("phoneInput");
 const sendBtn = document.getElementById("sendBtn");
-const confirmBtn = document.getElementById("confirmSend");
-const cancelBtn = document.getElementById("cancelPhone");
-const overlay = document.querySelector(".phone-modal__overlay");
 
-// ====== ФУНКЦИИ ДЛЯ МАСКИ ======
-function formatPhone(value) {
-  // оставляем только цифры
-  let val = value.replace(/\D/g, '');
-  if (val.length > 11) val = val.slice(0, 11);
-
-  let formatted = '+7';
-  if (val.length > 1) formatted += ' (' + val.slice(1, 4);
-  if (val.length >= 5) formatted += ') ' + val.slice(4, 7);
-  if (val.length >= 8) formatted += '-' + val.slice(7, 9);
-  if (val.length >= 10) formatted += '-' + val.slice(9, 11);
-
-  return formatted;
-}
-
-// ====== OPEN MODAL ======
-sendBtn.addEventListener("click", () => {
-  modal.classList.add("is-open");
-  phoneInput.focus();
-  if (!phoneInput.value) phoneInput.value = '+7 ';
-});
-
-// ====== CLOSE MODAL ======
-function closeModal() {
-  modal.classList.remove("is-open");
-  phoneInput.value = "";
-}
-
-cancelBtn.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
-
-// ====== МАСКА ВВОДА ======
-phoneInput.addEventListener("input", () => {
-  phoneInput.value = formatPhone(phoneInput.value);
-});
-
-phoneInput.addEventListener("focus", () => {
-  if (!phoneInput.value) phoneInput.value = '+7 ';
-});
-
-phoneInput.addEventListener("blur", () => {
-  if (phoneInput.value === '+7 ') phoneInput.value = '';
-});
-
-// ====== SEND DATA TO BACKEND ======
-confirmBtn.addEventListener("click", async () => {
-  const phone = phoneInput.value.trim();
-
-  if (phone.replace(/\D/g, '').length < 6) {
-    hintEl.textContent = "Введите корректный номер телефона 📞";
-    phoneInput.focus();
-    return;
-  }
-
-  closeModal();
-
-  // Читаемые названия
-  const typeNames = {
+const typeNames = {
     landing: "Лендинг",
     shop: "Интернет-магазин",
     app: "Приложение",
@@ -219,70 +159,45 @@ confirmBtn.addEventListener("click", async () => {
     corporate: "Корпоративный сайт"
   };
 
-  const featureNames = {
+const featureNames = {
     chat: "Онлайн-чат",
-    form: "Форма обратной связи",
+    contact: "Контактные кнопки",
     pay: "Онлайн-оплата",
     anim: "Анимации",
     seo: "SEO",
-    analytics: "Аналитика",
     speed: "Оптимизация скорости",
     security: "Безопасность",
     responsive: "Мобильная адаптация",
     integrations: "Интеграции"
   };
 
-  const timeNames = {
+const timeNames = {
     fast: "Срочно",
     normal: "Обычные сроки",
     calm: "Без спешки"
   };
 
+function updateContactLink() {
   const featuresList = [...state.features]
-    .map(f => `• ${featureNames[f] || f}`)
-    .join("\n");
+    .map(f => featureNames[f] || f)
+    .join(", ");
 
-  const message = `
-🧮 *Калькулятор DariX*
+  const message = [
+    "Здравствуйте! Хочу обсудить проект по расчету с сайта DariX.",
+    `Тип: ${typeNames[state.type]}`,
+    `Функции: ${featuresList || "без доп. функций"}`,
+    `Сроки: ${timeNames[state.time]}`,
+    `Ориентир по цене: ${priceEl.textContent} руб.`
+  ].join("\n");
 
-📦 Тип проекта:
-${typeNames[state.type]}
-
-⚙️ Функции:
-${featuresList || "—"}
-
-⏱ Сроки:
-${timeNames[state.time]}
-
-💰 Итоговая цена:
-${priceEl.textContent} ₽
-
-📞 Телефон клиента:
-${phone}
-`;
-
-  hintEl.textContent = "Отправляем расчёт… 🚀";
-
-  try {
-    const res = await fetch("/submit_request", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: "Калькулятор сайта",
-        phone: phone,
-        message: message
-      })
-    });
-
-    if (res.ok) {
-      hintEl.textContent = "Заявка отправлена ✅ Мы свяжемся с вами";
-    } else {
-      throw new Error();
-    }
-
-  } catch {
-    hintEl.textContent = "Ошибка отправки 😅 Попробуйте ещё раз";
+  if (sendBtn) {
+    sendBtn.href = `https://t.me/darixteam?text=${encodeURIComponent(message)}`;
   }
+}
 
-  setTimeout(compute, 2500);
-});
+if (sendBtn) {
+  ["click", "focus", "mouseenter"].forEach(eventName => {
+    sendBtn.addEventListener(eventName, updateContactLink);
+  });
+  updateContactLink();
+}
