@@ -191,7 +191,7 @@ function updateContactLink() {
   ].join("\n");
 
   if (sendBtn) {
-    sendBtn.href = `https://t.me/darixteam?text=${encodeURIComponent(message)}`;
+    sendBtn.dataset.contactMessage = message;
   }
 }
 
